@@ -1,4 +1,4 @@
-# == Class: pdns::install
+# == Class: pdns::config::redhat
 #
 # This class ensures config files are created for the PowerDNS service
 # It is not intended to be directly called.
@@ -7,7 +7,7 @@
 #
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
-class pdns::config {
+class pdns::config::redhat {
 
   File {
     notify  => Class['pdns::service']

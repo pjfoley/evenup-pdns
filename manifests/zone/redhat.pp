@@ -1,4 +1,4 @@
-# == Define: pdns::zone
+# == Define: pdns::zone::redhat
 #
 # This define installs BIND zonefiles for the bind backend in PowerDNS
 #
@@ -24,34 +24,31 @@
 #
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
-define pdns::zone (
-  $source,
-  $ensure = 'present',
-) {
+define pdns::zone::redhat {
 
   include pdns
   Class['pdns::install'] ->
-  Pdns::Zone[$name] ~>
+  Pdns::Zone[$pdns::zone::name] ~>
   Class['pdns::service']
 
-  $file_ensure = $ensure ? {
+  $file_ensure = $pdns::zone::ensure ? {
     'present' => 'file',
     default   => 'absent'
   }
 
   file {
-    "/etc/pdns/zones/${name}.zone":
+    "/etc/pdns/zones/${pdns::zone::name}.zone":
       ensure  => $file_ensure,
       owner   => 'pdns',
       group   => 'pdns',
       mode    => '0444',
-      source  => $source,
+      source  => $pdns::zone::source,
   }
 
-  concat::fragment{"${name}_zone":
-    ensure  => $ensure,
+  concat::fragment{"${pdns::zone::name}_zone":
+    ensure  => $pdns::zone::ensure,
     target  => '/etc/named.conf',
-    content => "zone \"${name}\" IN { type master; file \"/etc/pdns/zones/${name}.zone\"; };",
+    content => "zone \"${pdns::zone::name}\" IN { type master; file \"/etc/pdns/zones/${pdns::zone::name}.zone\"; };",
   }
 }
 

@@ -1,4 +1,4 @@
-# == Class: pdns::install
+# == Class: pdns::install::redhat
 #
 # This class installs the files and packages needed for the PowerDNS services.
 # It is not intended to be directly called.
@@ -7,7 +7,7 @@
 #
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
-class pdns::install {
+class pdns::install::redhat {
 
   include ruby::httparty
 

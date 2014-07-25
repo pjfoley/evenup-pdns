@@ -1,4 +1,4 @@
-# == Class: pdns::install
+# == Class: pdns::service::redhat
 #
 # This class manages the PowerDNS services
 # It is not intended to be directly called.
@@ -7,7 +7,7 @@
 #
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
-class pdns::service {
+class pdns::service::redhat {
 
   service { 'pdns':
     ensure  => running,
