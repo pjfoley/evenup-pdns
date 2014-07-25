@@ -36,7 +36,7 @@ class pdns::install::redhat {
     owner   => 'pdns',
     group   => 'pdns',
     mode    => '0554',
-    source  => 'puppet:///modules/pdns/pdns_puppetdb.rb'
+    source  => 'puppet:///modules/pdns/redhat/pdns_puppetdb.rb'
   }
 
   file { $pdns::puppetdb_logfile:

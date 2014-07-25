@@ -25,7 +25,7 @@ class pdns::config::redhat {
     owner   => 'pdns',
     group   => 'pdns',
     mode    => '0444',
-    content => template('pdns/pdns.conf.erb'),
+    content => template('pdns/redhat/pdns.conf.erb'),
   }
 
   file { '/etc/pdns/puppetdb.yaml':
@@ -33,7 +33,7 @@ class pdns::config::redhat {
     owner   => 'pdns',
     group   => 'pdns',
     mode    => '0444',
-    content => template('pdns/puppetdb.yaml.erb'),
+    content => template('pdns/redhat/puppetdb.yaml.erb'),
   }
 
   file { '/etc/pdns-recursor/recursor.conf':
@@ -41,7 +41,7 @@ class pdns::config::redhat {
     owner   => 'pdns',
     group   => 'pdns',
     mode    => '0444',
-    content => template('pdns/recursor.conf.erb'),
+    content => template('pdns/redhat/recursor.conf.erb'),
   }
 
   concat { '/etc/named.conf':
